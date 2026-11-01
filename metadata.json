@@ -1,0 +1,6 @@
+{
+  "name": "Xelofia - AI Automation Platform",
+  "description": "Amplify your productivity and automate your work with intelligent AI workflows and predictive revenue insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

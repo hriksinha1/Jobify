@@ -1,0 +1,62 @@
+/* Restrained Micro-animations for Xelofia */
+
+@keyframes hero-float-1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes hero-float-2 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes hero-float-3 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes hero-float-dashboard {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.animate-float-1 {
+  animation: hero-float-1 6.5s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: hero-float-2 7.2s ease-in-out 0.8s infinite;
+}
+
+.animate-float-3 {
+  animation: hero-float-3 6.8s ease-in-out 1.6s infinite;
+}
+
+.animate-float-dash {
+  animation: hero-float-dashboard 8s ease-in-out 0.4s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-1,
+  .animate-float-2,
+  .animate-float-3,
+  .animate-float-dash {
+    animation: none !important;
+  }
+}
