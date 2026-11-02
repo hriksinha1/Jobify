@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/react";
 import Logo from "./Logo.jsx";
 import { NAV_LINKS } from "../data/routes.js";
 import { SITE_CONTENT } from "../data/siteContent.js";
@@ -107,18 +108,27 @@ export default function Navbar() {
 
           {/* Right: Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <Link
-              to="/login"
-              className="text-[14px] font-body text-[#626262] hover:text-[#161616] px-2 py-1 transition-colors"
-            >
-              {SITE_CONTENT.brand.navSignIn}
-            </Link>
-            <Link
-              to="/signup"
-              className="inline-flex items-center justify-center h-[38px] px-5 rounded-full bg-[#141414] text-white text-[13.5px] font-medium transition-all duration-150 hover:bg-[#2A2A2A] active:scale-[0.98] shadow-xs"
-            >
-              {SITE_CONTENT.brand.navCta}
-            </Link>
+            <Show when="signed-out">
+              <SignInButton mode="modal">
+                <button
+                  type="button"
+                  className="text-[14px] font-body text-[#626262] hover:text-[#161616] px-2 py-1 transition-colors"
+                >
+                  {SITE_CONTENT.brand.navSignIn}
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center h-[38px] px-5 rounded-full bg-[#141414] text-white text-[13.5px] font-medium transition-all duration-150 hover:bg-[#2A2A2A] active:scale-[0.98] shadow-xs"
+                >
+                  {SITE_CONTENT.brand.navCta}
+                </button>
+              </SignUpButton>
+            </Show>
+            <Show when="signed-in">
+              <UserButton />
+            </Show>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -161,20 +171,31 @@ export default function Navbar() {
             </nav>
 
             <div className="pt-6 pb-6 border-t border-[#E8E8E8] flex flex-col gap-3">
-              <Link
-                to="/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full h-[44px] flex items-center justify-center rounded-full border border-[#E8E8E8] text-[#161616] text-[15px] font-medium"
-              >
-                {SITE_CONTENT.brand.navSignIn}
-              </Link>
-              <Link
-                to="/signup"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full h-[44px] flex items-center justify-center rounded-full bg-[#141414] text-white text-[15px] font-medium shadow-sm"
-              >
-                {SITE_CONTENT.brand.navCta}
-              </Link>
+              <Show when="signed-out">
+                <SignInButton mode="modal">
+                  <button
+                    type="button"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full h-[44px] flex items-center justify-center rounded-full border border-[#E8E8E8] text-[#161616] text-[15px] font-medium"
+                  >
+                    {SITE_CONTENT.brand.navSignIn}
+                  </button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button
+                    type="button"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full h-[44px] flex items-center justify-center rounded-full bg-[#141414] text-white text-[15px] font-medium shadow-sm"
+                  >
+                    {SITE_CONTENT.brand.navCta}
+                  </button>
+                </SignUpButton>
+              </Show>
+              <Show when="signed-in">
+                <div className="flex justify-center">
+                  <UserButton />
+                </div>
+              </Show>
             </div>
           </div>
         )}
