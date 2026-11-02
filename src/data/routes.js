@@ -12,16 +12,6 @@ export const NAV_LINKS = [
 
 export const STUB_ROUTES = [
   {
-    path: "/signup",
-    title: "Create Your Jobify Account",
-    description: "Start organizing your job search and tracking applications in one place.",
-  },
-  {
-    path: "/login",
-    title: "Sign In to Jobify",
-    description: "Access your saved roles, application statuses, and interview calendar.",
-  },
-  {
     path: "/about",
     title: "About Jobify",
     description: "Empowering career transitions and simplifying employment discovery.",

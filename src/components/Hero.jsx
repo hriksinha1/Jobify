@@ -49,12 +49,12 @@ export default function Hero() {
             <span>{hero.primaryCta.label}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
-          <a
-            href={hero.secondaryCta.href}
+          <Link
+            to={hero.secondaryCta.href}
             className="w-full sm:w-auto inline-flex items-center justify-center h-[46px] px-6 rounded-full bg-[#F7F7F7] border border-[#E8E8E8] text-[#161616] text-[14.5px] font-medium transition-all duration-150 hover:bg-[#EFEFEF] active:scale-[0.98]"
           >
             {hero.secondaryCta.label}
-          </a>
+          </Link>
         </div>
 
         {/* Product Demonstration: Large Realistic Jobify Dashboard Preview */}

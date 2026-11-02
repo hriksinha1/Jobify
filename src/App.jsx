@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { Suspense, lazy, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
+import { AppProvider } from "./app/AppProvider.jsx";
+import DashboardLayout from "./app/DashboardLayout.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import JobCategories from "./components/JobCategories.jsx";
@@ -15,6 +17,31 @@ import StubPage from "./components/StubPage.jsx";
 import NotFound from "./components/NotFound.jsx";
 import { STUB_ROUTES } from "./data/routes.js";
 import { useScrollToHash } from "./hooks/useScrollToHash.js";
+
+const ChatPage = lazy(() => import("./app/pages/ChatPage.jsx"));
+const JobsPage = lazy(() => import("./app/pages/JobsPage.jsx"));
+const ApplicationsPage = lazy(() => import("./app/pages/ApplicationsPage.jsx"));
+const FoundersPage = lazy(() => import("./app/pages/FoundersPage.jsx"));
+const PortfolioPage = lazy(() => import("./app/pages/PortfolioPage.jsx"));
+const SignInPage = lazy(() => import("./app/pages/SignInPage.jsx"));
+const PlansPage = lazy(() => import("./app/pages/PlansPage.jsx"));
+const CheckoutPage = lazy(() => import("./app/pages/CheckoutPage.jsx"));
+
+function SignupRedirect() {
+  const { search } = useLocation();
+  return <Navigate to={`/plans${search}`} replace />;
+}
+
+const workspace = (
+  <>
+    <Route index element={<Navigate to="chat" replace />} />
+    <Route path="chat" element={<ChatPage />} />
+    <Route path="jobs" element={<JobsPage />} />
+    <Route path="applications" element={<ApplicationsPage />} />
+    <Route path="founders" element={<FoundersPage />} />
+    <Route path="portfolio" element={<PortfolioPage />} />
+  </>
+);
 
 /**
  * Main Jobify Landing Page
@@ -71,48 +98,54 @@ function HomePage() {
 /**
  * Layout orchestrator with persistent Navbar, Router, and Footer
  */
-function AppContent() {
+function PublicLayout() {
   useScrollToHash();
-
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#161616]">
       {/* 01. Header & Navigation */}
       <Navbar />
-
-      <div className="flex-1">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/404" element={<NotFound />} />
-
-          {/* Statically registered stub routes */}
-          {STUB_ROUTES.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={
-                <StubPage
-                  title={route.title}
-                  description={route.description}
-                />
-              }
-            />
-          ))}
-
-          {/* Catch-all route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
-
+      <div className="flex-1"><Outlet /></div>
       {/* 11. Footer */}
       <Footer />
     </div>
   );
 }
 
+function AppContent() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" aria-busy="true" />}>
+      <Routes>
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/404" element={<NotFound />} />
+          {STUB_ROUTES.map((route) => (
+            <Route key={route.path} path={route.path} element={<StubPage title={route.title} description={route.description} />} />
+          ))}
+        </Route>
+
+        {/* Account flow */}
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/login" element={<Navigate to="/signin" replace />} />
+        <Route path="/signup" element={<SignupRedirect />} />
+        <Route path="/plans" element={<PlansPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+
+        {/* Product workspaces: /demo is open sample data, /app requires a Clerk session */}
+        <Route path="/demo" element={<DashboardLayout />}>{workspace}</Route>
+        <Route path="/app" element={<DashboardLayout />}>{workspace}</Route>
+
+        <Route element={<PublicLayout />}><Route path="*" element={<NotFound />} /></Route>
+      </Routes>
+    </Suspense>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
-      <AppContent />
+      <AppProvider>
+        <AppContent />
+      </AppProvider>
     </BrowserRouter>
   );
 }

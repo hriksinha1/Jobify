@@ -24,8 +24,8 @@ export const SITE_CONTENT = {
       href: "/signup",
     },
     secondaryCta: {
-      label: "Explore Features",
-      href: "#how-it-works",
+      label: "Watch Demo",
+      href: "/demo/chat",
     },
     // Illustrative demo application records for realistic dashboard preview
     demoApplications: [
@@ -380,7 +380,7 @@ export const SITE_CONTENT = {
       {
         title: "ACCOUNT",
         links: [
-          { label: "Sign In", href: "/login" },
+          { label: "Sign In", href: "/signin" },
           { label: "Get Started", href: "/signup" },
         ],
       },
