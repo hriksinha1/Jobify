@@ -120,7 +120,7 @@ function SidebarBody({ collapsed, onToggle, base, onNavigate, showToggle = true 
 }
 
 export default function DashboardLayout() {
-  const { mode, base, authLoaded, isSignedIn } = useApp();
+  const { mode, base, authLoaded, isSignedIn, plan } = useApp();
   const { pathname } = useLocation();
   const [collapsed, setCollapsed] = useState(false);
   const [drawer, setDrawer] = useState(false);
@@ -161,6 +161,11 @@ export default function DashboardLayout() {
         {mode === "demo" && (
           <div className="shrink-0 bg-[#FDF3DC] text-[#7a5600] text-[12px] px-4 py-1.5 text-center">
             Demo workspace: sample data only. No real email, AI, billing or job listings are connected.
+          </div>
+        )}
+        {mode === "app" && !plan && (
+          <div className="shrink-0 bg-[#E6F0FD] text-[#1B66C0] text-[12px] px-4 py-1.5 text-center">
+            You don't have a plan yet, so AI credits are 0. <Link to="/plans" className="underline font-medium">Choose a plan</Link> (simulated checkout) or <Link to="/demo/chat" className="underline font-medium">try the demo</Link>.
           </div>
         )}
         <main id="dash-main" className="flex-1 min-h-0 overflow-y-auto">

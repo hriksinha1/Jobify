@@ -70,8 +70,12 @@ export const inputCls =
 
 export const Input = React.forwardRef(({ className, ...p }, ref) => <input ref={ref} className={cn(inputCls, className)} {...p} />);
 export const Textarea = ({ className, ...p }) => <textarea className={cn(inputCls, "h-auto py-2 min-h-[88px] resize-y", className)} {...p} />;
-export const Select = ({ className, children, ...p }) => (
-  <select className={cn(inputCls, "appearance-none pr-8 bg-[length:12px] cursor-pointer", className)} {...p}>
+const CHEVRON = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23707070' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")`;
+export const Select = ({ className, children, style, ...p }) => (
+  <select
+    style={{ backgroundImage: CHEVRON, backgroundRepeat: "no-repeat", backgroundPosition: "right 10px center", ...style }}
+    className={cn(inputCls, "appearance-none pr-8 cursor-pointer", className)}
+    {...p}>
     {children}
   </select>
 );

@@ -14,7 +14,7 @@ const SUGGESTIONS = [
 const CREDIT_COST = 5;
 
 export default function ChatPage() {
-  const { toast, credits, spendCredits } = useApp();
+  const { toast, credits, spendCredits, plan } = useApp();
   const [convs, setConvs] = useState(null);
   const [activeId, setActiveId] = useState(null);
   const [mode, setMode] = useState("agent");
@@ -35,7 +35,7 @@ export default function ChatPage() {
   const send = async (override) => {
     const msg = (override ?? text).trim();
     if (!msg || busy) return;
-    if (credits < CREDIT_COST) return toast("Not enough AI credits (demo).", "error");
+    if (credits < CREDIT_COST) return toast(plan ? "Not enough AI credits this month." : "Choose a plan to get AI credits.", "error");
     let id = activeId;
     if (!id) {
       id = (await chatService.createConversation(mode)).id;
@@ -126,7 +126,7 @@ export default function ChatPage() {
         <div className="max-w-[640px] mx-auto rounded-2xl border border-[#E7E7E7] bg-white shadow-sm focus-within:border-[#161616]">
           <label htmlFor="chat-input" className="sr-only">Message</label>
           <textarea id="chat-input" rows={1} value={text} onChange={(e) => setText(e.target.value)} onKeyDown={onKey}
-            placeholder="Who should I email for you?" className="w-full resize-none bg-transparent px-4 pt-3.5 pb-1 text-[13.5px] focus:outline-none placeholder:text-[#A0A0A0] max-h-40" />
+            placeholder="Who should I email for you?" className="w-full resize-none bg-transparent px-4 pt-3.5 pb-1 text-[13.5px] focus-visible:!outline-none placeholder:text-[#A0A0A0] max-h-40" />
           <div className="flex items-center gap-2 px-2.5 pb-2.5">
             <div role="radiogroup" aria-label="Mode" className="inline-flex rounded-full bg-[#F4F4F4] p-0.5 text-[12px]">
               {[["ask", Search, "Ask"], ["agent", Send, "Agent"]].map(([id, Icon, label]) => (

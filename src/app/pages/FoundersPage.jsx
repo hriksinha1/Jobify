@@ -10,7 +10,7 @@ const PAGE_SIZE = 10;
 const XIcon = () => <svg viewBox="0 0 24 24" className="w-3 h-3" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.4 8.4L23 22h-6.8l-5.3-7-6.1 7H1.7l7.9-9L1.3 2h7l4.8 6.4L18.9 2Zm-1.2 18h1.9L6.6 3.9H4.6L17.7 20Z" /></svg>;
 
 export default function FoundersPage() {
-  const { toast, credits, spendCredits } = useApp();
+  const { toast, credits, spendCredits, plan } = useApp();
   const [q, setQ] = useState("");
   const [dq, setDq] = useState("");
   const [country, setCountry] = useState("");
@@ -32,7 +32,7 @@ export default function FoundersPage() {
 
   const unlock = (co) => {
     const r = founderService.unlock(co.id, credits);
-    if (!r.ok) return toast(r.error + " (demo credits).", "error");
+    if (!r.ok) return toast(plan ? "Not enough credits to unlock." : "Choose a plan to get credits.", "error");
     if (r.cost) spendCredits(r.cost);
     setState({ ...r.state });
     toast(`Unlocked ${co.name} (demo). No real contact data is provided.`);
