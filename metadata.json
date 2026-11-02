@@ -1,6 +1,6 @@
 {
-  "name": "Xelofia - AI Automation Platform",
-  "description": "Amplify your productivity and automate your work with intelligent AI workflows and predictive revenue insights.",
+  "name": "Jobify - Job Search & Application Management",
+  "description": "Discover opportunities, track applications, and manage your job search in one focused workspace.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

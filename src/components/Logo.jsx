@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { cn } from "../lib/utils.js";
 
 /**
- * Xelofia Logo Component
- * Renders the signature 3x3 X-pattern glyph alongside the Bricolage Grotesque wordmark.
+ * Jobify Brand Logo Component
+ * Clean geometric monogram paired with Bricolage Grotesque wordmark.
  */
 export default function Logo({
   variant = "nav", // "nav" | "footer"
@@ -13,48 +13,49 @@ export default function Logo({
   onClick,
 }) {
   const isFooter = variant === "footer";
-  const iconSize = isFooter ? 44 : 26;
+  const iconSize = isFooter ? 34 : 26;
 
   return (
     <Link
       to="/"
       onClick={onClick}
-      aria-label="Xelofia Home"
+      aria-label="Jobify Home"
       className={cn(
-        "inline-flex items-center gap-3 select-none text-[#1C1C1C] transition-opacity hover:opacity-90 focus-visible:rounded-md",
+        "inline-flex items-center gap-2.5 select-none text-[#161616] transition-opacity hover:opacity-90 focus-visible:rounded-md",
         className
       )}
     >
-      {/* 3x3 X-Pattern Glyphs */}
-      <svg
-        width={iconSize}
-        height={iconSize}
-        viewBox="0 0 28 28"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
+      {/* Sleek Jobify Geometric Monogram */}
+      <div
+        style={{ width: iconSize, height: iconSize }}
+        className="rounded-lg bg-[#141414] text-white flex items-center justify-center shrink-0 shadow-xs"
         aria-hidden="true"
-        className="shrink-0"
       >
-        {/* Top-left */}
-        <rect x="1" y="1" width="7" height="7" rx="2.5" />
-        {/* Top-right */}
-        <rect x="20" y="1" width="7" height="7" rx="2.5" />
-        {/* Center */}
-        <rect x="10.5" y="10.5" width="7" height="7" rx="2.5" />
-        {/* Bottom-left */}
-        <rect x="1" y="20" width="7" height="7" rx="2.5" />
-        {/* Bottom-right */}
-        <rect x="20" y="20" width="7" height="7" rx="2.5" />
-      </svg>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          className="w-4 h-4"
+          stroke="currentColor"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* Stylized J with upward career arrow */}
+          <path d="M12 4v10a4 4 0 0 1-8 0" />
+          <path d="M12 4l3 3" />
+          <path d="M12 4l-3 3" />
+          <circle cx="18" cy="7" r="1.5" fill="currentColor" stroke="none" />
+        </svg>
+      </div>
 
       {showWordmark && (
         <span
           className={cn(
-            "font-display font-medium tracking-tight text-[#1C1C1C] leading-none",
+            "font-display font-bold text-[#161616] leading-none tracking-tight",
             isFooter ? "wordmark-footer" : "wordmark-nav"
           )}
         >
-          Xelofia
+          Jobify
         </span>
       )}
     </Link>

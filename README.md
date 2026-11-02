@@ -1,46 +1,45 @@
-# Xelofia - AI Automation Platform
+# Jobify — Job Search & Application Management
 
-A high-fidelity, accessible, responsive landing page for **Xelofia**, engineered in React, Vite, and Tailwind CSS following strict design-system token specifications.
+A premium, modern, accessible SaaS landing page for **Jobify**, engineered in React 19, Vite 8, and Tailwind CSS following the exact 11-section information architecture of the Aarivi design reference.
 
-## Features
+## Product Identity
 
-- **Typography:** Editorial pairing of **Bricolage Grotesque** (display titles, statistics, wordmarks) and **DM Sans** (body, buttons, UI controls).
-- **Design Tokens:** Meticulously mapped CSS custom properties (`--bg`, `--surface`, `--ink`, `--accent-green`, `--sage-ring`, `--chart-orange`, `--chart-blue`) and fluid typography clamps.
-- **Section 01 (Navbar):** Responsive sticky header with backdrop blur, 3x3 signature X-glyph logo, scrollspy tracking, and accessible mobile sheet drawer.
-- **Section 02 (Hero):** Misty hills panorama with top/bottom gradient masks, high-contrast monochrome portrait cutout, interactive left notification cards (with functional toggle), and right Predictive AI Revenue dashboard with 3-ring concentric SVG donut chart.
-- **Section 03 (Powerful Features):** Responsive carousel featuring Card 1 (Automation AI node with dashed SVG connectors & resolution metrics) and Card 2 (5-year Net Revenue stacked area chart & 92% callout).
-- **Section 04 (Why Choose Us):** Full-bleed atmospheric ridge with 3 benefit items, active white card state, and wrap-around carousel controls.
-- **Section 05 (Get Started in 3 Steps):** Accessible 3-row accordion paired with an interactive converging integration diagram connecting Slack, Microsoft Teams, HubSpot, Mailchimp, and Shopify into Xelofia.
-- **Section 06 (Built for Every Team):** 4-card team grid with faint large numerals for standard cards and an expansive photographic marketing automation card.
-- **Section 07 (FAQ & Support):** Animated category tabs (Product, Support, Payments) with sliding indicator, accessible question accordions, and support CTA card.
-- **Section 08 (Footer):** Misty landscape continuation, newsletter subscription form with transparent connection handling, 4-column link directory, and copyright notice.
+Jobify is a focused job search and application management platform designed to help seekers organize their applications, manage interview milestones, track recruiter communications, and discover opportunities across tech, design, engineering, and remote roles.
 
-## Local Development
+## Section Order & Architecture
+
+The landing page follows this exact sequence:
+
+1. **Header & Navigation:** Minimalist sticky header with brand logo, nav links (`#how-it-works`, `#categories`, `#pricing`, `#faq`, `#contact`), Sign In, and Get Started CTA.
+2. **Hero & Product Demonstration:** Large bold headline ("Your job search, all in one place"), supporting description, dual CTAs, subtle halftone flank patterns, and a rich, realistic Jobify application tracking workspace preview with demo records and verified company indicators.
+3. **Explore Job Categories:** Interactive category chips (AI Engineer, Frontend, Backend, Product Designer, Internships, Remote Jobs, etc.) with role count feedback.
+4. **How Jobify Works:** Interactive 4-capability workflow engine (`Search`, `Track`, `Prepare`, `Stay Organized`) with live UI demonstrations for each stage.
+5. **Everything You Need (Also Included):** 2×2 feature grid with compact product demonstrations for Application Tracking, Smart Job Discovery, Resume Management, and Milestone Follow-Ups.
+6. **Pricing Plans:** Simple transparent pricing with a monthly/annual billing switch (Save 20%), detailed feature comparisons for Free and Pro plans, and development disclaimers.
+7. **Customer Testimonials:** Compact customer review cards highlighting genuine use-cases from university graduates, interns, and early career seekers.
+8. **Frequently Asked Questions (FAQ):** Accessible two-column layout with expandable, single-open accordions answering top candidate questions.
+9. **Get in Touch / Contact Form:** Two-column contact section with direct support email, business hour details, and a validated contact form.
+10. **Final Conversion CTA:** Centered conversion panel with generous whitespace and "Get Started" prompt.
+11. **Footer:** Four organized link columns (`PRODUCT`, `COMPANY`, `ACCOUNT`, `LEGAL`), brand summary, and copyright notice.
+
+## Tech Stack
+
+- **Framework:** React 19 + Vite 8
+- **Routing:** React Router DOM (with hash scroll management and stub pages)
+- **Styling:** Tailwind CSS 4 + custom CSS design tokens
+- **Typography:** Bricolage Grotesque (Display) + DM Sans (Body/UI)
+- **Icons:** Lucide React
+- **Animations:** Motion + CSS micro-interactions
+
+## Development
 
 ```bash
-# 1. Install dependencies
+# Install dependencies
 npm install
 
-# 2. Run local development server (port 3000)
+# Run development server
 npm run dev
 
-# 3. Build production bundle
+# Build production bundle
 npm run build
 ```
-
-## Photography & Asset Replacement
-
-See [`src/assets/images/README.md`](src/assets/images/README.md) for detailed dimensions, WebP specifications, and image-generation prompts for all photography slots (`hero-landscape`, `hero-portrait`, `feature-automation-bg`, etc.).
-
-Each image slot includes an automated CSS/SVG atmospheric gradient fallback so the application remains visually complete prior to substituting photography.
-
-## Environment Variables
-
-Defined in [`.env.example`](.env.example):
-- `VITE_NEWSLETTER_ENDPOINT`: Webhook / API URL for newsletter submissions (e.g., Formspree, Mailchimp, Resend). If left empty, the UI informs the user that the subscription service is pending configuration.
-- `VITE_SUPPORT_EMAIL`: Support contact email address for inquiries.
-
-## Vercel Deployment
-
-This project includes [`vercel.json`](vercel.json) pre-configured with Vite framework detection, SPA client rewrites, and asset cache headers.
-Deploy by connecting your repository directly to Vercel or running `vercel --prod`.

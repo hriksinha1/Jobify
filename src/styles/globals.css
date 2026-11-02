@@ -1,26 +1,25 @@
 :root {
   --bg: #FFFFFF;
+  --bg-secondary: #F7F7F7;
   --surface: #F2F2F2;
-  --surface-tint: #F5F7F4;
-  --ink: #1C1C1C;
-  --ink-2: #5C5C5C;
-  --ink-3: #8A8A8A;
-  --border: #E6E6E6;
-  --btn: #2A2A2A;
-  --btn-deep: #0B1215;
-  --accent-green: #0B6B12;
-  --green-muted: #6F8F66;
-  --sage-ring: #A3B59C;
-  --sky-top: #BFD9F0;
-  --sky-bottom: #E3EFF8;
-  --chart-orange: #F5820D;
-  --chart-blue: #5B7BD5;
-  --chart-grey: #B8BDB5;
+  --surface-tint: #FAFAFA;
+  --ink: #161616;
+  --ink-2: #626262;
+  --ink-3: #888888;
+  --border: #E8E8E8;
+  --border-light: #F0F0F0;
+  --btn: #141414;
+  --btn-hover: #262626;
+  --subtle-accent: #EDEDED;
+  --status-success: #238636;
+  --status-warning: #D99A22;
+  --status-error: #D94B4B;
+  --status-info: #0969DA;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: 84px;
 }
 
 body {
@@ -37,9 +36,8 @@ body {
 /* Typography styles */
 .font-display {
   font-family: 'Bricolage Grotesque', sans-serif;
-  font-weight: 500;
-  font-variation-settings: 'opsz' 96, 'wdth' 88;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  letter-spacing: -0.035em;
   line-height: 1.08;
   text-wrap: balance;
 }
@@ -50,55 +48,62 @@ body {
 }
 
 /* Fluid scale headings */
-.text-h1 {
-  font-size: clamp(2.5rem, 1.6rem + 4.2vw, 4.5rem);
+.text-hero-h1 {
+  font-size: clamp(2.5rem, 1.8rem + 3.8vw, 4.25rem);
   line-height: 1.05;
+  letter-spacing: -0.04em;
 }
 
-.text-h2 {
-  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
-  line-height: 1.08;
+.text-section-h2 {
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
 }
 
-.text-h2-small {
-  font-size: clamp(1.875rem, 1.4rem + 2vw, 3rem);
-  line-height: 1.1;
+.text-card-h3 {
+  font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.45rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 }
 
-.text-h3 {
-  font-size: clamp(1.5rem, 1.2rem + 1.1vw, 2.5rem);
-  line-height: 1.15;
-}
-
-.text-card-title {
-  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
-  line-height: 1.2;
-}
-
-.text-big-numeral {
-  font-size: clamp(2.5rem, 2rem + 2vw, 4rem);
-  line-height: 1;
-  color: rgba(28, 28, 28, 0.15);
-}
-
-/* Wordmark sizes */
 .wordmark-nav {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
 .wordmark-footer {
-  font-size: clamp(2.25rem, 1.6rem + 2.5vw, 3.5rem);
+  font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.4rem);
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
-/* Shadows */
-.shadow-card {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(20, 30, 20, 0.06);
+/* Subtle background dot pattern for hero flanks */
+.bg-halftone-left {
+  background-image: radial-gradient(#D5D5D5 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+  mask-image: radial-gradient(ellipse 55% 55% at 0% 40%, black 15%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 55% 55% at 0% 40%, black 15%, transparent 70%);
 }
 
-.shadow-floating {
-  box-shadow: 0 12px 40px rgba(20, 30, 20, 0.10);
+.bg-halftone-right {
+  background-image: radial-gradient(#D5D5D5 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+  mask-image: radial-gradient(ellipse 55% 55% at 100% 40%, black 15%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 55% 55% at 100% 40%, black 15%, transparent 70%);
+}
+
+/* Subtle card & dashboard shadows */
+.shadow-app {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 20px 40px -4px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-subtle {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 10px 24px -3px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
 }
 
 /* Focus visible */
@@ -110,8 +115,8 @@ body {
 /* Progressive enhancement section reveal */
 .js .reveal-init {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(14px);
+  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1), transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 

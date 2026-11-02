@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ImageSlot from "./ImageSlot.jsx";
-import FloatingNotifications from "./FloatingNotifications.jsx";
-import RevenueDashboard from "./RevenueDashboard.jsx";
+import { ArrowRight, Search, Filter, Briefcase, Calendar, CheckCircle2, Clock, AlertCircle } from "lucide-react";
 import { SITE_CONTENT } from "../data/siteContent.js";
 import { cn } from "../lib/utils.js";
 
@@ -12,96 +10,221 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative w-full overflow-hidden pt-8 md:pt-14 pb-12 lg:pb-20 bg-white"
+      className="relative w-full overflow-hidden pt-12 md:pt-20 pb-16 md:pb-24 bg-white"
       aria-label="Introduction"
     >
-      {/* Centered Text Block */}
-      <div className="relative z-30 mx-auto w-full max-w-[920px] px-5 sm:px-8 text-center flex flex-col items-center">
-        <h1 className="font-display text-h1 text-[#1C1C1C] tracking-tight">
-          <span>{hero.headlineLine1}</span>
-          <br className="hidden sm:inline" />
-          <span className="sm:inline block"> {hero.headlineLine2}</span>
+      {/* Subtle Halftone Pattern on Outer Left and Right Flanks */}
+      <div
+        className="hidden md:block absolute left-0 top-0 bottom-0 w-[240px] lg:w-[320px] bg-halftone-left pointer-events-none opacity-60 z-0"
+        aria-hidden="true"
+      />
+      <div
+        className="hidden md:block absolute right-0 top-0 bottom-0 w-[240px] lg:w-[320px] bg-halftone-right pointer-events-none opacity-60 z-0"
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 mx-auto w-full max-w-[1120px] px-6 md:px-8 text-center flex flex-col items-center">
+        {/* Eyebrow Pill */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F7F7F7] border border-[#E8E8E8] text-[12px] font-body font-medium text-[#626262] tracking-wide mb-6">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#238636]" />
+          <span>{hero.eyebrow}</span>
+        </div>
+
+        {/* Main Headline */}
+        <h1 className="font-display text-hero-h1 text-[#161616] tracking-tight max-w-[820px]">
+          {hero.headline}
         </h1>
 
-        <p className="mt-5 max-w-[520px] font-body text-[16px] sm:text-[17px] text-[#5C5C5C] leading-relaxed">
+        {/* Supporting Description */}
+        <p className="mt-5 max-w-[560px] font-body text-[16px] md:text-[17px] text-[#626262] leading-relaxed">
           {hero.description}
         </p>
 
-        <div className="mt-8">
+        {/* CTA Buttons */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
           <Link
-            to={hero.ctaHref}
-            className="inline-flex items-center justify-center h-[48px] px-7 rounded-full bg-[#2A2A2A] text-white text-[15px] font-medium transition-all duration-200 hover:bg-[#3A3A3A] hover:-translate-y-[1px] active:scale-[0.98] shadow-md focus-visible:rounded-full"
+            to={hero.primaryCta.href}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-[46px] px-7 rounded-full bg-[#141414] text-white text-[14.5px] font-medium transition-all duration-150 hover:bg-[#2A2A2A] active:scale-[0.98] shadow-sm"
           >
-            {hero.cta}
+            <span>{hero.primaryCta.label}</span>
+            <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
-      </div>
-
-      {/* The Visual Stage */}
-      <div className="relative w-full mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 mt-2 md:-mt-6 h-[720px] md:h-[580px] lg:h-[640px]">
-        {/* Layer 1: Landscape Panorama with top/bottom mist gradient mask */}
-        <div
-          className="absolute inset-x-0 bottom-0 top-[22%] md:top-[28%] z-0 pointer-events-none select-none"
-          style={{
-            maskImage:
-              "linear-gradient(to bottom, transparent 0%, #000 28%, #000 75%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, #000 28%, #000 75%, transparent 100%)",
-          }}
-        >
-          <ImageSlot
-            slotKey="hero-landscape"
-            className="w-full h-full object-cover"
-            objectPosition="50% 40%"
-            loading="eager"
-            fetchPriority="high"
-          />
-          {/* Subtle top and bottom white atmospheric fades */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/70 pointer-events-none" />
+          <a
+            href={hero.secondaryCta.href}
+            className="w-full sm:w-auto inline-flex items-center justify-center h-[46px] px-6 rounded-full bg-[#F7F7F7] border border-[#E8E8E8] text-[#161616] text-[14.5px] font-medium transition-all duration-150 hover:bg-[#EFEFEF] active:scale-[0.98]"
+          >
+            {hero.secondaryCta.label}
+          </a>
         </div>
 
-        {/* Layer 2: Portrait Cutout with Torso Fade */}
-        <div
-          className="absolute inset-x-0 bottom-0 z-10 flex justify-center pointer-events-none"
-          style={{
-            maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, #000 62%, transparent 100%)",
-          }}
-        >
-          <div className="w-[300px] sm:w-[360px] md:w-[420px] lg:w-[460px] h-[360px] sm:h-[430px] md:h-[490px] lg:h-[530px] relative md:left-[3%]">
-            <ImageSlot
-              slotKey="hero-portrait"
-              className="w-full h-full object-contain filter grayscale contrast-125"
-              objectPosition="bottom center"
-              loading="eager"
-            />
+        {/* Product Demonstration: Large Realistic Jobify Dashboard Preview */}
+        <div className="mt-14 md:mt-18 w-full max-w-[980px]">
+          <div className="relative rounded-2xl bg-white border border-[#E8E8E8] shadow-app overflow-hidden text-left">
+            {/* Top Window Bar */}
+            <div className="h-10 px-4 bg-[#F9F9F9] border-b border-[#E8E8E8] flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#E5E5E5]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#E5E5E5]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#E5E5E5]" />
+                <span className="ml-3 text-[12px] font-body text-[#888888] font-medium hidden sm:inline">
+                  jobify.app/dashboard
+                </span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-body text-[#888888] bg-white border border-[#E8E8E8]">
+                <span>Demo Workspace</span>
+              </div>
+            </div>
+
+            {/* Application Main Layout */}
+            <div className="flex flex-col md:flex-row min-h-[380px]">
+              {/* Left Mini Sidebar */}
+              <div className="hidden md:flex w-[200px] bg-[#FDFDFD] border-r border-[#E8E8E8] p-4 flex-col justify-between shrink-0">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 px-2 py-1 text-[13px] font-bold text-[#161616]">
+                    <div className="w-4 h-4 rounded bg-[#141414] text-white flex items-center justify-center text-[10px]">J</div>
+                    <span>My Job Hunt</span>
+                  </div>
+                  <nav className="space-y-1 text-[13px] font-body">
+                    <div className="flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-[#F2F2F2] text-[#161616] font-medium">
+                      <span className="flex items-center gap-2">
+                        <Briefcase className="w-3.5 h-3.5" />
+                        Applications
+                      </span>
+                      <span className="text-[11px] px-1.5 py-0.2 rounded bg-white border border-[#E0E0E0]">5</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[#626262] hover:bg-[#F7F7F7]">
+                      <Search className="w-3.5 h-3.5" />
+                      Saved Roles
+                    </div>
+                    <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[#626262] hover:bg-[#F7F7F7]">
+                      <Calendar className="w-3.5 h-3.5" />
+                      Interviews
+                    </div>
+                  </nav>
+                </div>
+
+                <div className="p-2.5 rounded-lg bg-[#F7F7F7] border border-[#E8E8E8] text-[11px] text-[#626262]">
+                  <div className="font-medium text-[#161616]">Active Tracker</div>
+                  <div>3 in progress, 1 offer</div>
+                </div>
+              </div>
+
+              {/* Main Content Area: Applications Table */}
+              <div className="flex-1 p-4 sm:p-6 bg-white overflow-x-auto">
+                {/* Search & Filter Toolbar */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 mb-4 border-b border-[#F0F0F0]">
+                  <div className="flex items-center gap-2 w-full sm:w-auto">
+                    <div className="relative w-full sm:w-[260px]">
+                      <Search className="w-3.5 h-3.5 text-[#888888] absolute left-3 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="text"
+                        readOnly
+                        value="Search applications..."
+                        className="w-full h-8 pl-8 pr-3 text-[12px] bg-[#F7F7F7] border border-[#E8E8E8] rounded-md text-[#626262] outline-none cursor-default"
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      className="h-8 px-2.5 rounded-md border border-[#E8E8E8] bg-white text-[12px] text-[#626262] inline-flex items-center gap-1.5 shrink-0"
+                    >
+                      <Filter className="w-3 h-3" />
+                      <span>Filter</span>
+                    </button>
+                  </div>
+                  <div className="text-[12px] text-[#888888] font-body">
+                    Showing 5 active applications
+                  </div>
+                </div>
+
+                {/* Applications Table List */}
+                <div className="divide-y divide-[#F0F0F0] text-[13px] font-body">
+                  {hero.demoApplications.map((app) => (
+                    <div
+                      key={app.id}
+                      className="py-3 px-2 flex items-center justify-between gap-4 hover:bg-[#FAFAFA] rounded-md transition-colors"
+                    >
+                      {/* Company & Role */}
+                      <div className="flex items-center gap-3 min-w-[180px]">
+                        <div
+                          className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-[11px] font-bold shrink-0"
+                          style={{ backgroundColor: app.companyBg }}
+                        >
+                          {app.companyInitials}
+                        </div>
+                        <div>
+                          <div className="font-medium text-[#161616] leading-snug">
+                            {app.title}
+                          </div>
+                          <div className="text-[11.5px] text-[#888888]">
+                            {app.company} · {app.type}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Location (hidden on very small viewports) */}
+                      <div className="hidden sm:block text-[12px] text-[#626262]">
+                        {app.location}
+                      </div>
+
+                      {/* Applied Date */}
+                      <div className="hidden md:block text-[12px] text-[#888888]">
+                        {app.appliedDate}
+                      </div>
+
+                      {/* Status Badge */}
+                      <div className="shrink-0 flex items-center gap-2">
+                        {app.status === "Interview" && (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11.5px] font-medium bg-[#FEF3C7] text-[#92400E]">
+                            <Clock className="w-3 h-3" />
+                            {app.status}
+                          </span>
+                        )}
+                        {app.status === "Offer" && (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11.5px] font-medium bg-[#DCFCE7] text-[#15803D]">
+                            <CheckCircle2 className="w-3 h-3" />
+                            {app.status}
+                          </span>
+                        )}
+                        {app.status === "Applied" && (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11.5px] font-medium bg-[#EFF6FF] text-[#1D4ED8]">
+                            {app.status}
+                          </span>
+                        )}
+                        {app.status === "Review" && (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11.5px] font-medium bg-[#F3E8FF] text-[#7E22CE]">
+                            {app.status}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Dashboard Footer Note */}
+            <div className="px-4 py-2 bg-[#F9F9F9] border-t border-[#E8E8E8] text-right">
+              <span className="text-[11px] text-[#888888] font-body italic">
+                Illustrative preview interface with sample records
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* DESKTOP LAYOUT (>=768px): Notification stack left, Revenue dashboard right */}
-        <div className="hidden md:block">
-          {/* Layer 3: Left Notification Stack */}
-          <div className="absolute left-6 lg:left-12 top-[44%] lg:top-[42%] z-20 w-[240px] lg:w-[304px]">
-            <FloatingNotifications />
-          </div>
-
-          {/* Layer 4: Right Dashboard */}
-          <div className="absolute right-6 lg:right-12 top-[34%] lg:top-[32%] z-20 w-[260px] lg:w-[300px]">
-            <RevenueDashboard />
-          </div>
-        </div>
-
-        {/* MOBILE LAYOUT (<768px): Recomposed without hiding any decorative element */}
-        <div className="block md:hidden relative z-20 w-full h-full pt-4 flex flex-col justify-between pb-4">
-          {/* Top: Centered Dashboard card */}
-          <div className="w-[88%] max-w-[320px] mx-auto">
-            <RevenueDashboard />
-          </div>
-
-          {/* Bottom: Left-aligned staggered notification stack over torso fade area */}
-          <div className="w-[82%] max-w-[300px] pl-2 self-start space-y-2">
-            <FloatingNotifications />
+        {/* Hero Brand Strip */}
+        <div className="mt-12 md:mt-16 w-full pt-6 border-t border-[#F0F0F0]">
+          <p className="text-[12px] font-body uppercase tracking-wider text-[#888888] mb-4">
+            Track applications across industry leaders
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14 opacity-60">
+            {hero.supportingCompanies.map((c) => (
+              <span
+                key={c.name}
+                className="font-display text-[15px] md:text-[17px] font-bold tracking-tight text-[#161616]"
+              >
+                {c.label}
+              </span>
+            ))}
           </div>
         </div>
       </div>

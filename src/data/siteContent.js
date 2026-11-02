@@ -1,369 +1,394 @@
 /**
- * Site content and copy for Xelofia
- * All textual content is centralized here per system guidelines.
+ * Centralized Site Content & Copy for Jobify
+ * Adheres to Aarivi information architecture and section requirements.
  */
 
-export const SUPPORT_EMAIL = "support@xelofia.com"; // TODO: Update with client's production contact email
-
-export const SHOW_EXTENSION_SLIDES = true;
+export const SUPPORT_EMAIL = "support@jobify.app";
 
 export const SITE_CONTENT = {
   brand: {
-    name: "Xelofia",
-    tagline: "AI Automation Platform",
+    name: "Jobify",
+    tagline: "Job Search & Application Management",
     navCta: "Get Started",
+    navSignIn: "Sign In",
   },
 
   hero: {
-    headlineLine1: "Amplify Your Productivity",
-    headlineLine2: "Automate Your Work",
+    eyebrow: "YOUR JOB SEARCH, ALL IN ONE PLACE",
+    headline: "Your job search, all in one place.",
+    subheadline: "Discover opportunities. Track applications. Move your career forward.",
     description:
-      "Smart AI tools that automate repetitive tasks, streamline workflows, and cut manual effort, so you can focus on what matters most.",
-    cta: "Get 14 days free trial",
-    ctaHref: "/signup",
-    notifications: [
-      {
-        id: "lead",
-        title: "New lead in Xelofia",
-        type: "lead",
-        toggleInitial: true,
-      },
-      {
-        id: "score",
-        title: "The score is greater than 50",
-        type: "score",
-        avatar: "avatar-1",
-        dotColor: "#F5820D",
-      },
-      {
-        id: "notify",
-        title: "Notify sales team",
-        type: "action",
-        chip: "Filters",
-      },
-    ],
-    dashboard: {
-      title: "Predictive AI Revenue",
-      filterLabel: "Filters",
-      totalRevenue: "$ 149k",
-      metrics: [
-        { label: "Interactions", value: "$30k", color: "#B8BDB5" },
-        { label: "Proposal", value: "$46k", color: "#F5820D" },
-        { label: "Qualification", value: "$60k", color: "#5B7BD5" },
-      ],
-      chartAriaLabel: "Illustrative product UI: predicted revenue 149 thousand dollars with breakdown across interactions, proposal, and qualification.",
+      "Find relevant opportunities, organize every application, and manage your job search from one focused workspace.",
+    primaryCta: {
+      label: "Get Started",
+      href: "/signup",
     },
-  },
-
-  features: {
-    title: "Powerful Features That Work for You",
-    description: "Powerful automation designed to simplify your workflow and maximize efficiency.",
-    items: [
+    secondaryCta: {
+      label: "Explore Features",
+      href: "#how-it-works",
+    },
+    // Illustrative demo application records for realistic dashboard preview
+    demoApplications: [
       {
-        id: "workflow-automation",
-        panelType: "workflow",
-        panelHeader: "Automation",
-        badge: {
-          title: "Automation AI",
-          author: "By Xelofia - latest update 18 May",
-          growth: "+8.4% in 5 Days",
-        },
-        stats: [
-          { label: "Self-Service Resolutions", value: "1,200" },
-          { label: "Revenue Attributed", value: "$21,191" },
-        ],
-        title: "Workflow Automation",
-        description:
-          "Eliminate repetitive tasks and let intelligent automation handle your daily operations, so your team can focus on high-value work.",
-        linkText: "Learn More",
-        href: "/features/workflow-automation",
-        imageKey: "feature-automation-bg",
-        extension: false,
+        id: "app-1",
+        title: "Frontend Developer",
+        company: "Acme Corp",
+        companyInitials: "AC",
+        companyBg: "#1E293B",
+        location: "San Francisco, CA (Remote)",
+        type: "Full-time",
+        status: "Interview",
+        statusVariant: "warning", // status warning color #D99A22
+        appliedDate: "Oct 24",
+        matchScore: "96%",
       },
       {
-        id: "smart-analytics",
-        panelType: "analytics",
-        panelHeader: "Analytics",
-        chartBadge: "92%",
-        chartBadgeLabel: "Net Revenue",
-        chartLegend: [
-          { name: "Xelofia", color: "#6F8F66" },
-          { name: "Other Companies", color: "#B8BDB5" },
-          { name: "Other Companies", color: "#D1D6CE" },
-        ],
-        title: "Smart Analytics",
-        description:
-          "Streamline your workflows, and reduce manual effort - so you can focus on what truly matters and achieve more with less effort.",
-        linkText: "Learn More",
-        href: "/features/smart-analytics",
-        imageKey: "feature-analytics-bg",
-        extension: false,
+        id: "app-2",
+        title: "Product Designer",
+        company: "Linear Design",
+        companyInitials: "LN",
+        companyBg: "#5E6AD2",
+        location: "New York, NY (Remote)",
+        type: "Full-time",
+        status: "Offer",
+        statusVariant: "success", // status success color #238636
+        appliedDate: "Oct 21",
+        matchScore: "94%",
       },
       {
-        id: "smart-integrations",
-        panelType: "workflow",
-        panelHeader: "Integrations",
-        badge: {
-          title: "Omni Connector",
-          author: "Sync engine active - 42 services",
-          growth: "Zero Latency",
-        },
-        stats: [
-          { label: "Active Connectors", value: "350+" },
-          { label: "Sync Velocity", value: "<12ms" },
-        ],
-        title: "Smart Integrations",
-        description:
-          "Connect your core software stack seamlessly with bidirectional live triggers, webhook listeners, and zero operational lag.",
-        linkText: "Learn More",
-        href: "/features/workflow-automation",
-        imageKey: "feature-automation-bg",
-        extension: true,
+        id: "app-3",
+        title: "Full Stack Developer",
+        company: "Example Labs",
+        companyInitials: "EL",
+        companyBg: "#0F766E",
+        location: "Austin, TX (Hybrid)",
+        type: "Full-time",
+        status: "Applied",
+        statusVariant: "info",
+        appliedDate: "Oct 28",
+        matchScore: "89%",
       },
       {
-        id: "team-collaboration",
-        panelType: "analytics",
-        panelHeader: "Collaboration",
-        chartBadge: "98%",
-        chartBadgeLabel: "Team Adoption",
-        chartLegend: [
-          { name: "Product Teams", color: "#6F8F66" },
-          { name: "Sales Teams", color: "#B8BDB5" },
-          { name: "Support Teams", color: "#D1D6CE" },
-        ],
-        title: "Team Collaboration",
-        description:
-          "Empower cross-functional groups with granular governance, real-time workspace auditing, and reusable automated recipe templates.",
-        linkText: "Learn More",
-        href: "/features/smart-analytics",
-        imageKey: "feature-analytics-bg",
-        extension: true,
+        id: "app-4",
+        title: "UI/UX Designer",
+        company: "Studio North",
+        companyInitials: "SN",
+        companyBg: "#C026D3",
+        location: "London, UK (Remote)",
+        type: "Contract",
+        status: "Review",
+        statusVariant: "neutral",
+        appliedDate: "Oct 29",
+        matchScore: "92%",
       },
+      {
+        id: "app-5",
+        title: "Data Analyst",
+        company: "Example Analytics",
+        companyInitials: "EA",
+        companyBg: "#EA580C",
+        location: "Chicago, IL (On-site)",
+        type: "Full-time",
+        status: "Applied",
+        statusVariant: "info",
+        appliedDate: "Oct 27",
+        matchScore: "86%",
+      },
+    ],
+    supportingCompanies: [
+      { name: "Acme Corp", label: "Acme" },
+      { name: "Linear", label: "Linear" },
+      { name: "Stripe", label: "Stripe" },
+      { name: "Figma", label: "Figma" },
+      { name: "Notion", label: "Notion" },
+      { name: "Vercel", label: "Vercel" },
     ],
   },
 
-  benefits: {
-    title: "Why Choose Our AI Automation Platform",
-    description: "Powerful automation designed to simplify your workflow and maximize efficiency.",
-    imageKey: "benefits-bg",
-    items: [
-      {
-        id: "01",
-        label: "Smart Automation",
-        icon: "Cpu",
-        description: "Set up workflows that run themselves.",
-      },
-      {
-        id: "02",
-        label: "Intelligent Automation",
-        icon: "Brain",
-        description: "Rules that adapt as your team's work changes.",
-      },
-      {
-        id: "03",
-        label: "Real-Time Insights",
-        icon: "Zap",
-        description: "See what is working as it happens.",
-      },
+  categories: {
+    eyebrow: "EXPLORE OPPORTUNITIES",
+    heading: "Find every kind of role in one place.",
+    description:
+      "Discover opportunities across different industries, experience levels, and career paths.",
+    chips: [
+      { id: "ai", label: "AI Engineer", icon: "Bot", count: "340+ roles" },
+      { id: "frontend", label: "Frontend Developer", icon: "Code", count: "820+ roles" },
+      { id: "backend", label: "Backend Developer", icon: "Server", count: "750+ roles" },
+      { id: "fullstack", label: "Full Stack Developer", icon: "Layers", count: "910+ roles" },
+      { id: "product-designer", label: "Product Designer", icon: "Figma", count: "430+ roles" },
+      { id: "ui-ux", label: "UI/UX Designer", icon: "Layout", count: "390+ roles" },
+      { id: "data-analyst", label: "Data Analyst", icon: "BarChart3", count: "510+ roles" },
+      { id: "data-scientist", label: "Data Scientist", icon: "Binary", count: "420+ roles" },
+      { id: "devops", label: "DevOps Engineer", icon: "Cpu", count: "380+ roles" },
+      { id: "mobile", label: "Mobile Developer", icon: "Smartphone", count: "310+ roles" },
+      { id: "marketing", label: "Marketing", icon: "Megaphone", count: "290+ roles" },
+      { id: "qa", label: "QA Engineer", icon: "CheckSquare", count: "240+ roles" },
+      { id: "internships", label: "Internships", icon: "GraduationCap", count: "650+ roles" },
+      { id: "remote", label: "Remote Jobs", icon: "Globe", count: "1,200+ roles" },
     ],
   },
 
-  gettingStarted: {
-    title: "Get Started in 3 Simple Steps",
-    imageKey: "integration-bg",
-    diagramAriaLabel: "Diagram: Slack, Microsoft Teams, HubSpot, Mailchimp and Shopify connecting into Xelofia",
+  howItWorks: {
+    eyebrow: "HOW IT WORKS",
+    heading: "Find opportunities, stay organized, and get hired.",
+    description: "One focused workspace for the important parts of your job search.",
     steps: [
       {
+        id: "search",
         num: "01",
-        title: "Connect Your Tools",
-        description: "Integrate your apps and platforms in just a few clicks.",
+        label: "SEARCH",
+        title: "Find relevant opportunities.",
+        description:
+          "Explore opportunities that align with your skills, interests, and career goals with clear filters.",
       },
       {
+        id: "track",
         num: "02",
-        title: "Set Automation Rules",
-        // PLACEHOLDER: Description not visible in reference screenshot
-        description: "Define triggers and actions once, and let your workflows follow them.",
+        label: "TRACK",
+        title: "Manage every application.",
+        description:
+          "Keep track of applications, deadlines, interviews, and your progress in one organized workspace.",
       },
       {
+        id: "prepare",
         num: "03",
-        title: "Let AI Do the Work",
-        // PLACEHOLDER: Description not visible in reference screenshot
-        description: "Sit back while Xelofia handles the repetitive tasks for you.",
+        label: "PREPARE",
+        title: "Get your applications ready.",
+        description:
+          "Keep your resume, profile, and application materials organized so you can apply with confidence.",
+      },
+      {
+        id: "organize",
+        num: "04",
+        label: "STAY ORGANIZED",
+        title: "Keep your job search moving.",
+        description:
+          "Stay on top of your next steps, upcoming interviews, and important follow-ups without spreadsheet chaos.",
       },
     ],
   },
 
-  useCases: {
-    title: "Built for Every Team and Workflow",
-    description: "From marketing to operations, our AI automation adapts to your needs and simplifies every process.",
+  everythingYouNeed: {
+    eyebrow: "ALSO INCLUDED",
+    heading: "Everything you need to find opportunities and get hired.",
+    description: "Bring your job search essentials together in one simple workspace.",
+    cards: [
+      {
+        id: "card-1",
+        eyebrow: "APPLICATION TRACKING",
+        title: "Never lose track of an application.",
+        description:
+          "Organize the companies you've applied to and monitor each application's progress from submission to offer.",
+        badge: "Status Pipeline",
+      },
+      {
+        id: "card-2",
+        eyebrow: "SMART JOB DISCOVERY",
+        title: "Find roles that match your goals.",
+        description:
+          "Explore opportunities using relevant search filters, remote preferences, and curated job categories.",
+        badge: "Keyword Filters",
+      },
+      {
+        id: "card-3",
+        eyebrow: "RESUME MANAGEMENT",
+        title: "Get your resume ready.",
+        description:
+          "Keep your career profile and tailored application materials organized so you are always interview-ready.",
+        badge: "Profile Kit",
+      },
+      {
+        id: "card-4",
+        eyebrow: "ORGANIZED FOLLOW-UPS",
+        title: "Stay ready for what's next.",
+        description:
+          "Keep deadlines, interview dates, and next steps visible throughout your job search without manual reminders.",
+        badge: "Milestones",
+      },
+    ],
+  },
+
+  pricing: {
+    eyebrow: "SIMPLE PRICING",
+    heading: "Choose the right plan for your job search.",
+    description: "Start with the essentials and choose more support as your needs grow.",
+    monthlyYearlyDiscount: "Save 20% on Annual",
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        badge: "STARTER",
+        description: "Everything you need to kickstart your organized job search.",
+        monthlyPrice: 0,
+        yearlyPrice: 0,
+        period: "forever",
+        ctaLabel: "Get Started Free",
+        ctaHref: "/signup",
+        isPopular: false,
+        features: [
+          "Job discovery & smart filters",
+          "Basic application tracking (up to 15 active jobs)",
+          "Single resume profile storage",
+          "Application status updates",
+          "Web browser access",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Pro",
+        badge: "RECOMMENDED",
+        description: "Unlimited tracking and preparation tools for active job seekers.",
+        monthlyPrice: 9,
+        yearlyPrice: 7, // $7/mo billed annually
+        period: "per month",
+        ctaLabel: "Start Pro Plan",
+        ctaHref: "/signup?plan=pro",
+        isPopular: true,
+        features: [
+          "Unlimited saved jobs & applications",
+          "Advanced interview calendar & reminders",
+          "Multiple resume & cover letter versions",
+          "Application timeline & notes history",
+          "Priority customer support",
+          "Export applications to CSV",
+        ],
+      },
+    ],
+    disclaimer:
+      "Prices shown are illustrative for the preview version. Free tier available upon signup.",
+  },
+
+  testimonials: {
+    eyebrow: "CUSTOMER REVIEWS",
+    heading: "What customers are saying.",
+    description: "Real experiences from people using Jobify.",
+    disclaimer: "Illustrative feedback from early preview community testers.",
     items: [
       {
-        num: "01",
-        title: "Customer Support",
-        icon: "PhoneCall",
-        isHighlighted: false,
-        srDescription: "Deliver automated resolutions, intelligent ticket triaging, and real-time response escalation for customer success teams.",
-        href: "/use-cases/customer-support",
+        id: "t-1",
+        quote:
+          "Jobify replaced my messy spreadsheet within ten minutes. Seeing all my applications and interview stages in one clear view reduced my anxiety immensely.",
+        name: "Alex Morgan",
+        role: "Frontend Engineer",
+        org: "Recent University Graduate",
+        avatarInitials: "AM",
       },
       {
-        num: "02",
-        title: "Marketing Automation",
-        icon: "Megaphone",
-        isHighlighted: true,
-        imageKey: "usecase-marketing",
-        description: "Set up your automation in minutes and let AI handle the rest effortlessly.",
-        href: "/use-cases/marketing-automation",
+        id: "t-2",
+        quote:
+          "Applying to 40+ internship roles while studying was exhausting until I started using Jobify. The follow-up reminders made sure I never missed a recruiter call.",
+        name: "Sarah Chen",
+        role: "Product Design Student",
+        org: "Internship Candidate",
+        avatarInitials: "SC",
       },
       {
-        num: "03",
-        title: "Sales Workflow",
-        icon: "Briefcase",
-        isHighlighted: false,
-        srDescription: "Accelerate pipeline velocity, qualify inbound leads dynamically, and automate CRM record hygiene.",
-        href: "/use-cases/sales-workflow",
-      },
-      {
-        num: "04",
-        title: "Data & Reporting",
-        icon: "BarChart3",
-        isHighlighted: false,
-        srDescription: "Harmonize fragmented tool outputs into cohesive reporting metrics and automatic stakeholder dashboards.",
-        href: "/use-cases/data-reporting",
+        id: "t-3",
+        quote:
+          "Simple, fast, and completely free of clutter. I could easily monitor which companies reached out for interviews and which ones were pending.",
+        name: "David Kim",
+        role: "Data Analyst",
+        org: "Early Career Professional",
+        avatarInitials: "DK",
       },
     ],
   },
 
   faq: {
-    title: "All You Need to Know",
-    description: "Quick answers to help you get the most out of your unified workspace.",
-    tabs: [
-      { id: "product", label: "Product", icon: "Monitor" },
-      { id: "support", label: "Support", icon: "MessageCircle" },
-      { id: "payments", label: "Payments", icon: "CreditCard" },
+    eyebrow: "FAQ",
+    heading: "Frequently asked questions.",
+    description: "Everything you need to know about using Jobify.",
+    items: [
+      {
+        q: "What is Jobify?",
+        a: "Jobify is a focused job-search and application management platform designed to help job seekers discover roles, track application statuses, organize resume materials, and prepare for interviews from a single workspace.",
+      },
+      {
+        q: "How does Jobify help with my job search?",
+        a: "Instead of juggling scattered spreadsheets, email threads, and multiple job boards, Jobify brings your search into one structured dashboard where you can see application progress, set reminders, and maintain candidate profiles.",
+      },
+      {
+        q: "Can I track multiple job applications?",
+        a: "Yes. You can track every application across customizable stages such as Saved, Applied, Interview, Offer, and Archived, along with interview dates, notes, and contact contacts.",
+      },
+      {
+        q: "How can I find suitable opportunities?",
+        a: "Jobify provides curated role categories, experience level tags, and remote filters to quickly discover roles that match your background and career goals.",
+      },
+      {
+        q: "Is Jobify suitable for fresh graduates?",
+        a: "Yes. Fresh graduates and career changers use Jobify to organize their high-volume initial application process and stay prepared for recruiter follow-ups.",
+      },
+      {
+        q: "Can I use Jobify for internships?",
+        a: "Yes. Jobify includes dedicated internship tracking filters and milestone checklists specifically tailored for seasonal recruiting cycles.",
+      },
+      {
+        q: "Does Jobify offer a free plan?",
+        a: "Yes. Jobify offers a permanent Free tier that includes core job discovery, basic application tracking, and profile storage.",
+      },
+      {
+        q: "How can I contact support?",
+        a: "You can reach out directly using the contact form below or email our support desk at support@jobify.app.",
+      },
     ],
-    items: {
-      product: [
-        {
-          q: "What is your platform, and how can it benefit my SaaS team?",
-          a: "Our platform is a comprehensive workspace designed to eliminate the inefficiencies of switching between multiple tools. By centralizing your workflows, it reduces manual tasks, enhances collaboration, and streamlines your operations, allowing your team to focus on strategic initiatives.",
-        },
-        {
-          q: "Which tools and applications does your platform integrate with?",
-          // PLACEHOLDER
-          a: "Xelofia integrates with industry-standard productivity, messaging, CRM, and analytics software including Slack, Microsoft Teams, HubSpot, Shopify, Mailchimp, and custom webhooks.",
-        },
-        {
-          q: "Is technical expertise required to set up and use your platform?",
-          // PLACEHOLDER
-          a: "No coding background is required. The visual drag-and-drop workflow builder and pre-configured templates enable anyone on your team to create powerful automations in minutes.",
-        },
-        {
-          q: "Can your platform scale with my growing business needs?",
-          // PLACEHOLDER
-          a: "Yes. Our cloud architecture handles high throughput event processing with multi-region redundancy, role-based controls, and enterprise-grade concurrency.",
-        },
-        {
-          q: "What kind of customer support do you offer?",
-          // PLACEHOLDER
-          a: "We provide 24/7 technical documentation, community discussions, priority email assistance, and dedicated solutions engineering for enterprise accounts.",
-        },
-      ],
-      support: [
-        {
-          q: "How fast does customer support respond to inquiries?",
-          // PLACEHOLDER
-          a: "Our global support engineers respond to inquiries within standard business hours, with expedited assistance available for business-critical operational inquiries.",
-        },
-        {
-          q: "Do you offer assisted onboarding and workflow configuration?",
-          // PLACEHOLDER
-          a: "Yes. Teams can schedule guided walkthroughs and receive architecture guidance to migrate complex manual processes over smoothly.",
-        },
-        {
-          q: "Where can I find release notes and platform changelogs?",
-          // PLACEHOLDER
-          a: "All platform updates, API additions, and feature releases are documented continuously on our public changelog page.",
-        },
-        {
-          q: "Can I request custom connectors or private integrations?",
-          // PLACEHOLDER
-          a: "Organizations requiring private ERP or custom database connectors can submit integration requests directly to our solutions engineering team.",
-        },
-      ],
-      payments: [
-        {
-          q: "What payment methods are supported on Xelofia?",
-          // PLACEHOLDER
-          a: "We accept all major credit cards, automated ACH transfers for enterprise accounts, and annual invoicing upon request.",
-        },
-        {
-          q: "Can I change or cancel my subscription plan at any time?",
-          // PLACEHOLDER
-          a: "Yes, you can upgrade, downgrade, or cancel your active workspace plan directly from your account billing settings without penalties.",
-        },
-        {
-          q: "Is there a free trial period before committing?",
-          // PLACEHOLDER
-          a: "Every new workspace receives full access to platform features for 14 days with no initial payment required.",
-        },
-        {
-          q: "How does volume-based task metering work?",
-          // PLACEHOLDER
-          a: "Tasks are counted only when an automated action runs successfully. Test runs, trigger polls, and failed retries are never billed against your allowance.",
-        },
-      ],
-    },
-    supportCard: {
-      title: "Have more questions?",
-      subtitle: "Contact our support team",
-      buttonText: "Contact Us",
-    },
+  },
+
+  contact: {
+    eyebrow: "GET IN TOUCH",
+    heading: "Get in touch.",
+    description:
+      "Have a question or need help with your job search? Send us a message and our team will get back to you.",
+    details: [
+      { label: "Email Support", value: "support@jobify.app" },
+      { label: "Response Time", value: "Within 24 business hours" },
+      { label: "Location", value: "San Francisco, CA & Global Remote" },
+    ],
+  },
+
+  finalCta: {
+    heading: "Ready to start applying?",
+    description:
+      "Bring your job search into one place and take the next step in your career.",
+    buttonLabel: "Get Started",
+    buttonHref: "/signup",
   },
 
   footer: {
-    wordmark: "Xelofia",
-    newsletterTitle: "Subscribe Newsletter",
-    inputPlaceholder: "Enter Your Email",
-    buttonText: "Send Now",
-    copyright: `© ${new Date().getFullYear()} Xelofia. All rights reserved.`,
+    wordmark: "Jobify",
+    description:
+      "A simpler way to discover opportunities, track applications, and manage your job search.",
+    copyright: `© ${new Date().getFullYear()} Jobify. All rights reserved.`,
     linkGroups: [
       {
-        id: "g1",
+        title: "PRODUCT",
         links: [
-          { label: "Home", href: "/", isAnchor: true, targetId: "top" },
+          { label: "Features", href: "#how-it-works" },
+          { label: "Job Categories", href: "#categories" },
+          { label: "Pricing", href: "#pricing" },
+          { label: "FAQ", href: "#faq" },
+        ],
+      },
+      {
+        title: "COMPANY",
+        links: [
           { label: "About", href: "/about" },
-          { label: "Features", href: "/#features", isAnchor: true, targetId: "features" },
+          { label: "Contact", href: "#contact" },
           { label: "Blog", href: "/blog" },
-          { label: "Pricing", href: "/pricing" },
-          { label: "Integration", href: "/#get-started", isAnchor: true, targetId: "get-started" },
         ],
       },
       {
-        id: "g2",
+        title: "ACCOUNT",
         links: [
-          { label: "Pricing single", href: "/pricing/single" },
-          { label: "Blog single", href: "/blog/sample-post" },
-          { label: "Cookie policy", href: "/cookie-policy" },
-          { label: "404", href: "/404" },
+          { label: "Sign In", href: "/login" },
+          { label: "Get Started", href: "/signup" },
         ],
       },
       {
-        id: "g3",
+        title: "LEGAL",
         links: [
-          { label: "Login", href: "/login" },
-          { label: "Signup", href: "/signup" },
-          { label: "Forgot password", href: "/forgot-password" },
-          { label: "Early Access", href: "/early-access" },
-          { label: "Terms & Condition", href: "/terms" },
-        ],
-      },
-      {
-        id: "g4",
-        links: [
-          { label: "Style Guide", href: "/style-guide" },
-          { label: "Pass Protected", href: "/password-protected" },
-          { label: "License", href: "/license" },
-          { label: "Changelog", href: "/changelog" },
+          { label: "Privacy Policy", href: "/terms" },
+          { label: "Terms of Service", href: "/terms" },
         ],
       },
     ],
