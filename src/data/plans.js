@@ -47,8 +47,15 @@ export const CURRENCIES = {
   INR: { rate: 83, locale: "en-IN" },
 };
 
-export const formatMoney = (usd, currency = "USD") =>
-  new Intl.NumberFormat(CURRENCIES[currency].locale, { style: "currency", currency }).format(usd * CURRENCIES[currency].rate);
+export const formatMoney = (usd, currency = "USD") => {
+  const v = usd * CURRENCIES[currency].rate;
+  return new Intl.NumberFormat(CURRENCIES[currency].locale, {
+    style: "currency",
+    currency,
+    minimumFractionDigits: Number.isInteger(v) ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(v);
+};
 
 export const yearlySavings = (plan) => plan.monthly * 12 - plan.yearly;
 

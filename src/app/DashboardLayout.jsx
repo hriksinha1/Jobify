@@ -1,9 +1,10 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { NavLink, Navigate, Outlet, Link, useLocation } from "react-router-dom";
-import { MessageCircle, Briefcase, LayoutPanelTop, Users, AppWindow, PanelLeft, Menu, ChevronsUpDown, LogOut, CreditCard, ArrowLeftRight, Sparkles } from "lucide-react";
+import { MessageCircle, Briefcase, LayoutPanelTop, Users, AppWindow, PanelLeft, Menu, ChevronsUpDown, LogOut, CreditCard, ArrowLeftRight } from "lucide-react";
 import { useApp } from "./AppProvider.jsx";
 import { Avatar, Skeleton, ToastViewport, initialsOf } from "./ui.jsx";
 import { cn } from "../lib/utils.js";
+import Logo from "../components/Logo.jsx";
 
 const CAREER = [
   { to: "chat", label: "New Chat", icon: MessageCircle },
@@ -15,17 +16,10 @@ const TOOLS = [{ to: "portfolio", label: "Portfolio", icon: AppWindow }];
 
 function Brand({ collapsed }) {
   return (
-    <Link to="/" className="flex items-center gap-2.5 min-w-0" aria-label="Jobify home">
-      <span className="w-10 h-10 rounded-xl bg-[#141414] text-white flex items-center justify-center shrink-0" aria-hidden="true">
-        <Sparkles className="w-4 h-4" />
-      </span>
-      {!collapsed && (
-        <span className="leading-tight min-w-0">
-          <span className="block text-[14px] font-semibold font-display">Jobify</span>
-          <span className="block text-[11.5px] text-[#707070]">Dashboard</span>
-        </span>
-      )}
-    </Link>
+    <div className="flex items-center gap-2 min-w-0">
+      <Logo variant="nav" showWordmark={!collapsed} />
+      {!collapsed && <span className="text-[11px] text-[#707070] border border-[#E7E7E7] rounded-full px-1.5 py-0.5">Dashboard</span>}
+    </div>
   );
 }
 

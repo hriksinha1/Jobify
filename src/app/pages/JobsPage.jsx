@@ -102,7 +102,7 @@ export default function JobsPage() {
             {!data && !error && Array.from({ length: 8 }, (_, i) => <tr key={i}><td colSpan={7} className="px-6 py-3"><Skeleton className="h-8" /></td></tr>)}
             {rows.map((j) => (
               <tr key={j.id} className="border-b border-[#F0F0F0] hover:bg-[#FAFAFA] cursor-pointer" onClick={() => setDetail(j)}>
-                <td className="px-4 pl-6 py-2.5">
+                <td className="px-4 pl-6 py-1.5">
                   <div className="flex items-center gap-3">
                     <Avatar label={j.company[0]} color={j.companyColor} fg="#fff" square size={32} />
                     <div className="min-w-0"><div className="font-medium truncate">{j.title}</div><div className="text-[12px] text-[#707070]">{j.company}</div></div>
