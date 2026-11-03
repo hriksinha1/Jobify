@@ -67,17 +67,44 @@ Today the arrows from the browser to the API **do not exist yet**: the frontend 
 | `/demo/{chat,jobs,applications,founders,portfolio}` | Demo workspace, fixed demo user, sample data | none |
 | `/app/{chat,jobs,applications,founders,portfolio}` | Real workspace, same components | Clerk session (UX guard only) |
 
-### Frontend code map
+### Repository layout
 
 ```
-src/app/            AppProvider (user, mode, plan, credits, toasts), DashboardLayout, ui.jsx, pages/*
-src/services/       ← THE INTEGRATION SEAM. One file per domain. Pages never touch storage directly.
-src/data/           Demo fixtures + plans.js (plan/price config)
-src/lib/storage.js  localStorage helpers (demo persistence only; delete when APIs are real)
-src/components/     Marketing site
+Jobify/
+├── src/
+│   ├── main.tsx            Entry: ErrorBoundary > ClerkProvider > App
+│   ├── App.jsx             Route table (public site, /demo, /app, account flow)
+│   ├── app/                Signed-in product: AppProvider (user, mode, plan, credits, toasts),
+│   │                       DashboardLayout, ErrorBoundary, ui.jsx, pages/*
+│   ├── components/         Marketing site sections + shared bits (ui/ = small primitives)
+│   ├── services/           <- INTEGRATION SEAM. One file per domain; pages never touch storage or fetch
+│   ├── mocks/              Demo fixtures used by services today. Delete a file when its service goes live
+│   ├── data/               Static content/config: plans.js, siteContent.js, routes.js, images.js
+│   ├── config/env.js       The only place that reads import.meta.env
+│   ├── lib/                apiClient.js (fetch + Clerk JWT + ApiError), storage.js (demo-only), utils.js
+│   ├── hooks/              Reusable React hooks
+│   ├── styles/, index.css  Global styles / Tailwind entry
+│   └── assets/images/      Image slot specs
+├── public/                 Static files served as-is (robots.txt, assets/)
+├── docs/INTEGRATION.md     Per-endpoint API contracts for the backend developer
+├── .github/workflows/      CI: typecheck, build, npm audit
+├── vercel.json             SPA rewrite, cache headers, security headers (CSP in report-only)
+├── .env.example            Documented env vars (copy to .env.local)
+├── .agents/, skills-lock.json   Clerk agent-skill docs (dev tooling only; not shipped)
+└── SECURITY.md             Security rules and how to report issues
 ```
 
-Contracts for each service are documented in the header comment of each file and in [FRONTEND_BACKEND_INTEGRATION.md](FRONTEND_BACKEND_INTEGRATION.md).
+Conventions: pages import from `services/`, never from `mocks/`; secrets never go in `VITE_*` vars; `import.meta.env` is read only in `config/env.js`; new server calls go through `lib/apiClient.js`.
+
+### How the backend developer plugs in (per service)
+
+1. Set `VITE_API_BASE_URL`. `hasApi` in `src/config/env.js` becomes true.
+2. Open a service (e.g. `src/services/jobService.js`) and keep its exported method names and return shapes (contract: `docs/INTEGRATION.md`).
+3. Replace the mock body with `api("/jobs", { query })` from `src/lib/apiClient.js`. It already sends `Authorization: Bearer <Clerk JWT>` and throws `ApiError { status, code, message }`.
+4. Keep the mock path for `/demo` (it must never call the real API), e.g. `mode === "demo" || !hasApi ? mock : api(...)`.
+5. Delete the matching `src/mocks/*.js` fixtures and `localStorage` keys once nothing uses them.
+
+Contracts for each service are in [docs/INTEGRATION.md](docs/INTEGRATION.md) and in the header comment of each service file.
 
 ---
 
@@ -501,7 +528,7 @@ Steps:
 | Variable | Where | Notes |
 |---|---|---|
 | `VITE_CLERK_PUBLISHABLE_KEY` | web (build time) | Public. Must be set in Vercel. |
-| `VITE_API_BASE_URL` | web (build time) | e.g. `https://api.yourdomain.com` |
+| `VITE_API_BASE_URL` | web (build time) | e.g. `https://api.yourdomain.com`. Empty = mock services |
 | `CLERK_SECRET_KEY` | **server only** | Only if the API calls Clerk's Backend API. Never in a `VITE_` var. |
 | `CLERK_ISSUER`, `CLERK_AUTHORIZED_PARTIES` | api | For JWT verification |
 | `DATABASE_URL`, `REDIS_URL` | api, worker | Postgres + Redis |
@@ -611,7 +638,8 @@ Parallelism: while BE does Phase 0 and 1, FE can finish F2, F5, F6, F7, F8, F11 
 npm install
 cp .env.example .env.local      # then set VITE_CLERK_PUBLISHABLE_KEY (+ VITE_API_BASE_URL later)
 npm run dev                     # http://localhost:3000
-npm run lint                    # tsc --noEmit
+npm run typecheck               # tsc --noEmit (CI runs this + build)
+npm run check                   # typecheck + build
 npm run build
 ```
 - `/demo/*` works with no login. `/app/*` needs a Clerk session (create a test user in the Clerk dashboard; in development, the verification code for `+clerk_test` emails is `424242`).
@@ -635,4 +663,4 @@ Check `http://localhost:8000/api/health` and `http://localhost:8000/docs` (OpenA
 
 ### Appendix: marketing site (original scope of this repo)
 
-The public site follows this 11-section order: Header, Hero + product demo, Job Categories, How Jobify Works, Everything You Need, Pricing, Testimonials, FAQ, Contact, Final CTA, Footer. Stack: React 19, Vite 8, Tailwind CSS 4, React Router 7, Lucide, Motion, Bricolage Grotesque + DM Sans. Content lives in `src/data/siteContent.js`; testimonial and pricing copy there is placeholder and must be replaced with verified content before launch.
+The public site follows this 11-section order: Header, Hero + product demo, Job Categories, How Jobify Works, Everything You Need, Pricing, Testimonials, FAQ, Contact, Final CTA, Footer. Stack: React 19, Vite 8, Tailwind CSS 4, React Router 7, Lucide, Motion, Bricolage Grotesque + DM Sans. Content lives in `src/data/siteContent.js` (fixtures in `src/mocks/`); testimonial and pricing copy there is placeholder and must be replaced with verified content before launch.
