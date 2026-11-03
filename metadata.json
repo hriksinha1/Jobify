@@ -1,6 +1,0 @@
-{
-  "name": "Jobify - Job Search & Application Management",
-  "description": "Discover opportunities, track applications, and manage your job search in one focused workspace.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
