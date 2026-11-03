@@ -1,5 +1,5 @@
 /**
- * Image Registry for Xelofia
+ * Image Registry for Jobify
  * Defines intrinsic dimensions, semantic alt descriptions, and slot keys.
  */
 

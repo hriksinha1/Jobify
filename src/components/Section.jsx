@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "../lib/utils.js";
 
 /**
- * Standard semantic section container adhering to Xelofia design tokens.
+ * Standard semantic section container adhering to Jobify design tokens.
  * Enforces fluid container gutters and section block padding.
  */
 export default function Section({
