@@ -1,5 +1,6 @@
+import { env } from "../config/env.js";
 /**
- * Newsletter subscription service for Xelofia
+ * Newsletter subscription service for Jobify
  * 
  * Integration Point:
  * Configure VITE_NEWSLETTER_ENDPOINT in your environment (e.g., Formspree, Mailchimp,
@@ -9,7 +10,7 @@
  * rather than falsifying subscription success.
  */
 export async function subscribeNewsletter(email) {
-  const endpoint = import.meta.env.VITE_NEWSLETTER_ENDPOINT;
+  const endpoint = env.newsletterEndpoint;
 
   if (!endpoint || endpoint.trim() === "") {
     return { ok: false, reason: "not-configured" };

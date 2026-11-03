@@ -1,4 +1,4 @@
-import { PORTFOLIO } from "../data/mockPortfolio.js";
+import { PORTFOLIO } from "../mocks/portfolio.js";
 import { readStore, writeStore, wait } from "../lib/storage.js";
 
 /**

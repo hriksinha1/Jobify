@@ -1,9 +1,10 @@
 import React, { createContext, useCallback, useContext, useMemo, useState } from "react";
-import { useUser, useClerk } from "@clerk/react";
+import { useUser, useClerk, useAuth } from "@clerk/react";
 import { useLocation } from "react-router-dom";
 import { usePersisted, uid } from "../lib/storage.js";
 import { DEMO_USER, fromClerkUser } from "../services/authService.js";
 import { getPlan } from "../data/plans.js";
+import { setTokenGetter } from "../lib/apiClient.js";
 
 const Ctx = createContext(null);
 export const useApp = () => useContext(Ctx);
@@ -16,6 +17,9 @@ export function AppProvider({ children }) {
   const { pathname } = useLocation();
   const { user: clerkUser, isLoaded, isSignedIn } = useUser();
   const { signOut } = useClerk();
+  const { getToken } = useAuth();
+  // Give the API client access to the Clerk session JWT (used once services call the backend).
+  setTokenGetter(getToken);
   const mode = pathname.startsWith("/demo") ? "demo" : "app";
   const user = mode === "demo" ? DEMO_USER : fromClerkUser(clerkUser);
 

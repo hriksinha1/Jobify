@@ -1,4 +1,4 @@
-import { JOBS } from "../data/mockJobs.js";
+import { JOBS } from "../mocks/jobs.js";
 import { readStore, writeStore, wait } from "../lib/storage.js";
 
 /**

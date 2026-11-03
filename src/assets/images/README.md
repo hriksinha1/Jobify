@@ -1,6 +1,6 @@
-# Xelofia Asset Specifications
+# Jobify Asset Specifications
 
-This directory contains photographic and portrait assets for the Xelofia landing page.
+This directory contains photographic and portrait assets for the Jobify landing page.
 All images use modern web formats (WebP/PNG), explicit intrinsic aspect ratios to eliminate cumulative layout shift (CLS), and unified cool-green/atmospheric color grading.
 
 ## Asset Slot Manifest

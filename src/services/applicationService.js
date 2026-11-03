@@ -1,4 +1,4 @@
-import { APPLICATIONS } from "../data/mockApplications.js";
+import { APPLICATIONS } from "../mocks/applications.js";
 import { readStore, writeStore, wait, uid } from "../lib/storage.js";
 
 /**

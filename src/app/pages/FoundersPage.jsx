@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Search, Briefcase, MapPin, ExternalLink, Unlock, Heart, Linkedin, Mail, Users } from "lucide-react";
 import { founderService } from "../../services/founderService.js";
-import { FOUNDER_COUNTRIES, FOUNDER_INDUSTRIES, UNLOCK_COST } from "../../data/mockFounders.js";
+import { FOUNDER_COUNTRIES, FOUNDER_INDUSTRIES, UNLOCK_COST } from "../../mocks/founders.js";
 import { useApp } from "../AppProvider.jsx";
 import { Avatar, Badge, Button, EmptyState, PageHeader, Pagination, Select, Skeleton } from "../ui.jsx";
 import { cn } from "../../lib/utils.js";

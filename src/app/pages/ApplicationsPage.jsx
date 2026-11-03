@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Search, RefreshCw, Unplug, Plus, Mail, Calendar, MessageSquare, LayoutPanelTop, Trash2, Plug } from "lucide-react";
 import { applicationService } from "../../services/applicationService.js";
-import { STAGES } from "../../data/mockApplications.js";
+import { STAGES } from "../../mocks/applications.js";
 import { uid } from "../../lib/storage.js";
 import { useApp } from "../AppProvider.jsx";
 import { Avatar, Badge, Button, ConfirmDialog, Dialog, EmptyState, Field, Input, PageHeader, Select, Skeleton, Textarea } from "../ui.jsx";

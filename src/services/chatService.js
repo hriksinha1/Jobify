@@ -1,4 +1,4 @@
-import { CONVERSATIONS } from "../data/mockConversations.js";
+import { CONVERSATIONS } from "../mocks/conversations.js";
 import { readStore, writeStore, wait, uid } from "../lib/storage.js";
 
 /**

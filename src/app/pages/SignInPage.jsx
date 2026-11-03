@@ -1,3 +1,4 @@
+import { env } from "../../config/env.js";
 import React, { useEffect, useState } from "react";
 import { Navigate, useSearchParams, Link } from "react-router-dom";
 import { SignIn, SignUp, useUser, useClerk } from "@clerk/react";
@@ -6,7 +7,7 @@ import Logo from "../../components/Logo.jsx";
 import { Button } from "../ui.jsx";
 import { cn } from "../../lib/utils.js";
 
-const HAS_KEY = Boolean(import.meta.env.VITE_CLERK_PUBLISHABLE_KEY);
+const HAS_KEY = Boolean(env.clerkPublishableKey);
 
 /** Shown when Clerk can't load: no publishable key in this build, or the script never finished loading. */
 function AuthUnavailable({ reason }) {

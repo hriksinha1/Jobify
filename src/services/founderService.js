@@ -1,4 +1,4 @@
-import { COMPANIES, UNLOCK_COST } from "../data/mockFounders.js";
+import { COMPANIES, UNLOCK_COST } from "../mocks/founders.js";
 import { readStore, writeStore, wait } from "../lib/storage.js";
 
 /**

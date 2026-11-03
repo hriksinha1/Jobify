@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Search, SlidersHorizontal, Briefcase, Bookmark, BookmarkCheck, MapPin, X } from "lucide-react";
 import { jobService } from "../../services/jobService.js";
 import { applicationService } from "../../services/applicationService.js";
-import { JOB_FILTER_OPTIONS as OPT } from "../../data/mockJobs.js";
+import { JOB_FILTER_OPTIONS as OPT } from "../../mocks/jobs.js";
 import { useApp } from "../AppProvider.jsx";
 import { Avatar, Badge, Button, Dialog, EmptyState, Field, PageHeader, Pagination, Select, Skeleton } from "../ui.jsx";
 import { cn } from "../../lib/utils.js";
